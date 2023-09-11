@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,100;1,200;1,900&display=swap');
+:root {
+    --primary-color: #845ef7;
+    --secondery-color-black: #000000; 
+    --background-color:#e0dfd9;
+    --white-color : #fff;
+    --danger-color : #da6868;
+    
+}
+*{
+    box-sizing: border-box;
+    font-family: Poppins;
+    font-style: italic;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+.card{
+    background-color: var(--white-color);
+    min-width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius:10px 10px 100px 10px;
+    padding: 2rem;
+}
+
+.card .input > form{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    padding-right: 2rem;
+    border-bottom :1px solid rgba(0, 0, 0, .2) ; 
+    flex: 2;
+}
+
+.card .input > form > section {
+    display: flex;
+    flex-direction: column;
+}
+
+.card .input > form > section > input {
+background-color: var(--white-color);
+height: 2rem;
+max-width: 5rem;
+border: none;
+border-radius: 5px;
+border: 1px solid rgba(0,0,0,.2);
+font-weight: 900;
+}
+.card .input > form > section > label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(0, 0, 0, 0.4);
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+.output{
+
+    padding-top: 1rem;
+
+}
+.input {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    appearance: none;
+    box-shadow: none;
+    border: none;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: var(--white-color);
+    align-self: flex-end;
+    transform: translate(0,50%);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    transition: .3s;
+}
+button img {
+    width: 100%;
+    height: 100%;
+}
+button:hover {
+    transform: scale(1.1) translate(0,50%);
+    transition: .1s;
+}
+.output h1 {
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
+.output  span {
+    color: var(--primary-color);
+}
