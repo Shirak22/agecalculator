@@ -1,108 +1,83 @@
 
-class Age_calc {
-    constructor(data_input){
-        this.data_input = new Date(data_input);
+class ageCalculator {
+    constructor(birthdate) {
+        this.data_input = new Date(birthdate);
         this.currentDate = new Date();
-        this.currentMonth = this.currentDate.getMonth() + 1 ;
-        this.data_inputMonth = this.data_input.getMonth() + 1 ;
 
     }
 
     getYears = () => {
-        if((this.currentMonth - this.data_inputMonth ) < 0 ){
-            return  Math.floor((this.currentDate.getFullYear() - this.data_input.getFullYear() - 1));
-        }else if((this.currentMonth - this.data_inputMonth ) == 0  &&
-                 (this.currentDate.getDate() - this.data_input.getDate()) < 0
-        ){
-            return  Math.floor((this.currentDate.getFullYear() - this.data_input.getFullYear() - 1));
-        } else {
-            return Math.floor((this.currentDate.getFullYear() - this.data_input.getFullYear()));
-        }
-    }
+        const { currentDate, data_input } = this;
+        let age = currentDate.getFullYear() - data_input.getFullYear();
+        let m = currentDate.getMonth() - data_input.getMonth();
 
-    
+        if (m < 0 || m === 0 && currentDate.getDate() < data_input.getDate()) {
+            age--;
+        }
+
+        return age;
+
+    }
 
     getMonths = () => {
-        let monthDiff = this.currentMonth - this.data_inputMonth;
+        let monthDiff = this.currentDate.getMonth() - this.data_input.getMonth();
         let ageDays = this.currentDate.getDate() - this.data_input.getDate();
 
-            if(monthDiff > 0){
-                if(ageDays < 0  ){
-                    return monthDiff - 1; 
-                }else {
-                    return monthDiff ;
-                }
-                
-            }else if(monthDiff == 0){
-                if(ageDays < 0  ){
-                    return 12 - Math.abs(monthDiff - 1);
-                }else {
-                    return monthDiff ;
-                }
-            }else {
-                    if(ageDays < 0  ){
-                        return 12 - Math.abs(monthDiff - 1);
-                    }else {
-                        return 12 - Math.abs(monthDiff);
-                    }
-                    
-            }
+        if (ageDays < 0) {
+            monthDiff--;
+        }
+
+        if (monthDiff < 0) {
+            monthDiff += 12;
+        }
+
+        return monthDiff;
     }
-    daysInMonth = (year,month) => {
+
+    daysInMonth = (year, month) => {
         //returns the last day in the selected month and year
         return new Date(year, month, 0).getDate();
     }
     getDays = () => {
-        
-        if((this.currentDate.getDate() - this.data_input.getDate()) > 0){
-            let ageDays = this.currentDate.getDate() - this.data_input.getDate() ;
-            return ageDays;
-        }else if((this.currentDate.getDate() - this.data_input.getDate()) < 0){
-            let ageDays = this.currentDate.getDate() - this.data_input.getDate() + this.daysInMonth(this.data_input.getFullYear(),this.data_inputMonth) ;
-            return ageDays;
-        }{
-            let ageDays = this.currentDate.getDate() - this.data_input.getDate() + this.daysInMonth(this.data_input.getFullYear(),this.data_inputMonth) ;
+        let ageDays = this.currentDate.getDate() - this.data_input.getDate();
+        let ageMonths = this.currentDate.getMonth() - this.data_input.getMonth();
+        if (ageDays < 0) {
+            ageDays += this.daysInMonth(this.data_input.getFullYear(), this.currentDate.getMonth());
 
-            if((this.currentMonth - this.data_inputMonth ) <= 0){
-                return  this.currentDate.getDate() - this.data_input.getDate();
-            }else {
-                return this.daysInMonth(this.data_input.getFullYear(),this.data_inputMonth) -  ageDays;
-            }
         }
+
+        if (ageMonths < 0) {
+            let daysDiff = this.currentDate.getDate() - this.data_input.getDate() + this.daysInMonth(this.data_input.getFullYear(), this.data_input.getMonth());
+            ageDays = daysDiff;
+        }
+        return ageDays;
+
     }
 
 
 }
 
-const calc = new Age_calc('2022-09-12');
+const year = new ageCalculator('1990-08-10');
+console.log(year.getDays());
 
 
-console.log("Days: "+calc.getDays() + "|| Months: " + calc.getMonths()+ "|| Years: "+ calc.getYears());
-
-
-
-
-
-const app = ()=> {
+const app = () => {
     let btn = document.querySelector('.btn_submit');
-    btn.addEventListener('click',(e)=> {
+    btn.addEventListener('click', (e) => {
         e.preventDefault();
-        let getYear = parseInt(document.querySelector('input[name=year]').value); 
-        let getMonth = parseInt(document.querySelector('input[name=month]').value); 
-        let getDay = parseInt(document.querySelector('input[name = day]').value); 
-        let date = `${getYear}-${getMonth <=9 ?'0'+ getMonth : getMonth }-${getDay <=9 ?'0'+ getDay : getDay}`; 
-        
-        let calc = new age_calc(date); 
-        
-       
-        
+        let getYear = parseInt(document.querySelector('input[name=year]').value);
+        let getMonth = parseInt(document.querySelector('input[name=month]').value);
+        let getDay = parseInt(document.querySelector('input[name = day]').value);
+        let date = `${getYear}-${getMonth <= 9 ? '0' + getMonth : getMonth}-${getDay <= 9 ? '0' + getDay : getDay}`;
+
+        let calc = new ageCalculator(date);
 
         document.querySelector('[data-years] > span').textContent = calc.getYears();
-        document.querySelector('[data-months]> span').textContent =  calc.getMonths();
-        document.querySelector('[data-days]> span').textContent =  calc.getDays();
+        document.querySelector('[data-months]> span').textContent = calc.getMonths();
+        document.querySelector('[data-days]> span').textContent = calc.getDays();
     });
 
 
-    
+
 }
-// app();
+app();
