@@ -30,13 +30,13 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshot.png)
 
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/Shirak22/agecalculator)
-- Live Site URL: [Add live site URL here](https://agecalculy.netlify.app/)
+- Solution URL: [Solution](https://github.com/Shirak22/agecalculator)
+- Live Site URL: [live](https://agecalculy.netlify.app/)
 
 
 
@@ -55,8 +55,8 @@ Users should be able to:
 
 ## Author
 
-- Website - [Add your name here](https://codepen.io/shirakserop)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/shirak22)
+- Website - [Codepen](https://codepen.io/shirakserop)
+- Frontend Mentor - [Frontend Mentor](https://www.frontendmentor.io/profile/shirak22)
 
 
 
