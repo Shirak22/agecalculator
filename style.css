@@ -112,3 +112,43 @@ input[type=number] {
 .output  span {
     color: var(--primary-color);
 }
+
+
+
+/* ------------------------------info ----------------- */
+.author_info{
+    margin: 1rem 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    padding: .2rem;
+    display: flex;
+    color: #fff;
+
+}
+
+.author_info p,
+.author_info ul {
+     margin: 0 auto;
+     font-size: .7rem;
+}
+.author_info ul {
+    list-style:'➤ ';
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
+}
+
+.author_info ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+.author_info ul li a:hover {
+    appearance: none;
+    text-decoration: underline;
+    text-shadow: 0px 0px 5px #fff;
+}
+.author_info ul li:hover {
+    transform: scale(1.1);
+}
