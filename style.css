@@ -40,7 +40,7 @@ body{
     justify-content: space-between;
     padding-bottom: 2rem;
     padding-right: 2rem;
-    border-bottom :1px solid rgba(0, 0, 0, .2) ; 
+    border-bottom :1px solid rgba(0, 0, 0, .4) ; 
     flex: 2;
 }
 
@@ -55,13 +55,13 @@ height: 2rem;
 max-width: 5rem;
 border: none;
 border-radius: 5px;
-border: 1px solid rgba(0,0,0,.2);
+border: 1px solid rgba(0,0,0,.4);
 font-weight: 900;
 }
 .card .input > form > section > label {
     font-size: 10px;
     letter-spacing: 2px;
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.7);
 }
 input[type=number] {
     -moz-appearance: textfield;
