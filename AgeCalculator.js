@@ -36,22 +36,18 @@ export default class AgeCalculator {
 
     daysInMonth = (year, month) => {
         //returns the last day in the selected month and year
-        return new Date(year, month, 0).getDate();
+        return new Date(year, month + 1, 0).getDate();
     }
     getDays = () => {
+ 
         let ageDays = this.currentDate.getDate() - this.data_input.getDate();
-        let ageMonths = this.currentDate.getMonth() - this.data_input.getMonth();
-        if (ageDays < 0) {
-            ageDays += this.daysInMonth(this.data_input.getFullYear(), this.currentDate.getMonth());
-
+        if (ageDays < 0 ) {
+            let ageDiffer =  this.daysInMonth(this.data_input.getFullYear(), this.data_input.getMonth()) + ageDays;
+            ageDays = ageDiffer
         }
 
-        if (ageMonths < 0) {
-            let daysDiff = this.currentDate.getDate() - this.data_input.getDate() + this.daysInMonth(this.data_input.getFullYear(), this.data_input.getMonth());
-            ageDays = daysDiff;
-        }
         return ageDays;
-
+        
     }
 
 

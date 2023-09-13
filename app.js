@@ -34,17 +34,18 @@ const app = () => {
             let daysCount = 0; 
 
             const interval = setInterval(()=> {
-                yearsCount++;
+                yearsCount >= calc.getYears() ? yearsCount = yearsCount : yearsCount++;
                 MonthsCount >= calc.getMonths() ? MonthsCount = MonthsCount:MonthsCount++; 
                 daysCount >= calc.getDays() ? daysCount = daysCount:daysCount++; 
                 output.innerHTML = outputComponent_html(yearsCount, MonthsCount, daysCount);
+                
                 if(yearsCount >= calc.getYears() && MonthsCount >= calc.getMonths() && daysCount >=  calc.getDays() ) {
                      yearsCount = 0; 
                      MonthsCount = 0; 
                      daysCount = 0; 
                     clearInterval(interval); 
                 }
-        
+                
             },60)
          }else {
           alert();
